@@ -20,11 +20,13 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
+    _initFlutterChannel();
     eventChannel
         .receiveBroadcastStream()
         .listen(_onDataRecieved, onError: _onError);
   }
 
+  //  Stream data from EvenetChannel
   void _onDataRecieved(dynamic data) {
     if (data is int) {
       setState(() {
@@ -38,6 +40,7 @@ class _HomePageState extends State<HomePage> {
     log("Error on received brodcast stream: " + error.toString());
   }
 
+  // Invoking batterly level method on native
   Future<void> getBatteryLevel() async {
     late String batteryLevel;
     try {
@@ -49,6 +52,33 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _batteryLevel = batteryLevel;
       _isLoading = false;
+    });
+  }
+
+// Invoking increment counte ron native
+  Future<void> _incrementCounter() async {
+    setState(() {
+      _counter++;
+    });
+
+    // Send data to Native
+    await platformChannel.invokeMethod(
+        "flutterToWatch", {"method": "sendCounterToNative", "data": _counter});
+  }
+
+// Receiving data from  native
+  Future<void> _initFlutterChannel() async {
+    platformChannel.setMethodCallHandler((call) async {
+      print("Recieved native data! " + call.toString());
+      // Receive data from Native
+      switch (call.method) {
+        case "sendCounterToFlutter":
+          _counter = call.arguments["data"]["counter"];
+          _incrementCounter();
+          break;
+        default:
+          break;
+      }
     });
   }
 
@@ -83,6 +113,11 @@ class _HomePageState extends State<HomePage> {
           if (_isLoading) CircularProgressIndicator()
         ],
       )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
