@@ -20,6 +20,10 @@ class InterfaceController: WKInterfaceController {
     
     override func awake(withContext context: Any?) {
         communicationService.setupService()
+        //communicationService.addDelegate(self)
+    }
+    
+    override  func willActivate() {
         communicationService.addDelegate(self)
     }
     

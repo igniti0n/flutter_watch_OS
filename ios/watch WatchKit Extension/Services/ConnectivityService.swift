@@ -69,7 +69,7 @@ final class CommunicationService: NSObject, WCSessionDelegate {
     func handleIncommingMessages(message: [String : Any], replyHandler: (([String : Any]) -> Void)?) {
         print("Watch received message: ", message)
         guard let method = message["method"] as? String, let subscriptionTheme = WatchReceiveMethod(rawValue: method) else {
-            print("")
+            print("No such method for watch: ", message["method"])
             return
         }
         let data = message["data"]
@@ -78,6 +78,7 @@ final class CommunicationService: NSObject, WCSessionDelegate {
             handleTableData(data: data)
         }
         
+        print("Notifiy for delegates with theme: ", subscriptionTheme)
         delegates.forEach { delegate in
             if (delegate.subscriptionTheme == subscriptionTheme) {
                 delegate.onDataReceived(data: data)
