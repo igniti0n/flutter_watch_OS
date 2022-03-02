@@ -11,7 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // Channel for sending/receiving method invocations
   static const platformChannel = MethodChannel('samples.flutter.dev/battery');
+  // Channel for receiving stream data from native
   static const eventChannel = EventChannel('samples.flutter.dev/counter');
   final _textEditingController = TextEditingController();
   String _batteryLevel = "n/a";
