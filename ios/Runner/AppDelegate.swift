@@ -15,7 +15,9 @@ import  WatchConnectivity
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
             
+            // Activate session with watch
             activateSession()
+                    
             // Initializing FlutterViewController, he is needed for the binary messenger
             let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
             methodChannel = FlutterMethodChannel(name: "samples.flutter.dev/battery",
@@ -109,7 +111,6 @@ import  WatchConnectivity
 extension AppDelegate: FlutterStreamHandler {
     func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         self.flutterEventSink = events
-        print("ON LISSTEN IN PLATFORM SIDE")
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(onTimerUp), userInfo: nil, repeats: true)
         return nil
     }
