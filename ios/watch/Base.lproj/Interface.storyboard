@@ -11,10 +11,15 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watch" customModuleProvider="target">
                     <items>
-                        <label width="1" height="0.5" alignment="left" text="Label" textAlignment="center" id="3Bv-8V-jFt"/>
-                        <button width="1" alignment="left" title="Button" id="UdG-uy-PsM">
+                        <label width="1" height="0.40000000000000002" alignment="left" text="0" textAlignment="center" id="3Bv-8V-jFt"/>
+                        <button width="1" alignment="left" title="Counter +2" id="UdG-uy-PsM">
                             <connections>
                                 <action selector="onButtonPressed" destination="AgC-eL-Hgc" id="rEe-Uw-Twy"/>
+                            </connections>
+                        </button>
+                        <button width="1" alignment="left" title="Table" id="8cs-jI-Q7t">
+                            <connections>
+                                <segue destination="baL-Rq-gew" kind="push" id="QGW-RJ-Xtx"/>
                             </connections>
                         </button>
                     </items>
@@ -24,7 +29,34 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="107" y="188"/>
+            <point key="canvasLocation" x="71" y="23"/>
+        </scene>
+        <!--Table Interface Controller-->
+        <scene sceneID="quR-BQ-aT8">
+            <objects>
+                <controller id="baL-Rq-gew" customClass="TableInterfaceController" customModule="watch_WatchKit_Extension">
+                    <items>
+                        <table alignment="left" id="Shc-df-anO">
+                            <items>
+                                <tableRow identifier="TableViewCell" id="S79-di-BNS" customClass="TableViewCell" customModule="watch" customModuleProvider="target">
+                                    <group key="rootItem" width="1" alignment="left" id="K8A-KO-2gB">
+                                        <items>
+                                            <label width="1" height="1" alignment="left" text="Label" textAlignment="center" id="hbc-Hg-Tt7"/>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="label" destination="hbc-Hg-Tt7" id="n1M-2u-akS"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="table" destination="Shc-df-anO" id="bAd-ln-PZx"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="370" y="23"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

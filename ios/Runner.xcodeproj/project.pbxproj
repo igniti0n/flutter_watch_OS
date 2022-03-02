@@ -13,6 +13,10 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
+		A565D15527CEA6E600816E0B /* TableInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15427CEA6E600816E0B /* TableInterfaceController.swift */; };
+		A565D15727CF6C5F00816E0B /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15627CF6C5F00816E0B /* ConnectivityService.swift */; };
+		A565D15927CF6C8500816E0B /* TableDataPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */; };
+		A597401D27CE9D790080003C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A597401C27CE9D790080003C /* TableViewCell.swift */; };
 		A5C47DA427CCCC6400DBE1C2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C47DA227CCCC6400DBE1C2 /* Interface.storyboard */; };
 		A5C47DA627CCCC6600DBE1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C47DA527CCCC6600DBE1C2 /* Assets.xcassets */; };
 		A5C47DAC27CCCC6600DBE1C2 /* watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5C47DAB27CCCC6600DBE1C2 /* watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -90,6 +94,10 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A565D15427CEA6E600816E0B /* TableInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInterfaceController.swift; sourceTree = "<group>"; };
+		A565D15627CF6C5F00816E0B /* ConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
+		A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataPersistanceService.swift; sourceTree = "<group>"; };
+		A597401C27CE9D790080003C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		A5C47DA027CCCC6400DBE1C2 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C47DA327CCCC6400DBE1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		A5C47DA527CCCC6600DBE1C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -168,6 +176,15 @@
 			path = Runner;
 			sourceTree = "<group>";
 		};
+		A565D15A27CF6C9100816E0B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A565D15627CF6C5F00816E0B /* ConnectivityService.swift */,
+				A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		A5C47DA127CCCC6400DBE1C2 /* watch */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +197,9 @@
 		A5C47DAF27CCCC6600DBE1C2 /* watch WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				A565D15A27CF6C9100816E0B /* Services */,
+				A565D15427CEA6E600816E0B /* TableInterfaceController.swift */,
+				A597401C27CE9D790080003C /* TableViewCell.swift */,
 				A5C47DB027CCCC6600DBE1C2 /* InterfaceController.swift */,
 				A5C47DB227CCCC6600DBE1C2 /* ExtensionDelegate.swift */,
 				A5C47DB427CCCC6600DBE1C2 /* NotificationController.swift */,
@@ -368,6 +388,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A565D15927CF6C8500816E0B /* TableDataPersistanceService.swift in Sources */,
+				A565D15527CEA6E600816E0B /* TableInterfaceController.swift in Sources */,
+				A597401D27CE9D790080003C /* TableViewCell.swift in Sources */,
+				A565D15727CF6C5F00816E0B /* ConnectivityService.swift in Sources */,
 				A5C47DB527CCCC6600DBE1C2 /* NotificationController.swift in Sources */,
 				A5C47DB727CCCC6600DBE1C2 /* ComplicationController.swift in Sources */,
 				A5C47DB327CCCC6600DBE1C2 /* ExtensionDelegate.swift in Sources */,
