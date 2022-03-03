@@ -1,16 +1,15 @@
-# native_communication
+# Flutter app with watchOS
 
-A new Flutter project.
+Flutter communicates natively with iOS part of mobile application. The native iOS part of mobile applicastion uses 'WatchConnectivity' to then further communicate with watchOS.
 
-## Getting Started
+##Possible errors
 
-This project is a starting point for a Flutter application.
+— After running flutter pub get, on `GeneratedPluginRegistrant.register(with: self)` it is because of XCode, the app should build successfully!
 
-A few resources to get you started if this is your first Flutter project:
+— You need to be logged in with your apple id in XCode. You need to go to settings on the device, general, profiles and devices, and trust your app.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+— If there are some errors still, do:
+	Delete /flutter/bin/cache/artifacts directory and run flutter doctor in terminal
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- If app wont run bcs target is not iphoneos or smth like that, check your build SDK and deployment targets in Xcode for watch and watch extension (they both need to be watchOS), and also add this (unless it gets fixed by flutter side by now):
+	https://github.com/flutter/flutter/issues/99031
