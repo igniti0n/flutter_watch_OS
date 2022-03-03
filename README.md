@@ -2,7 +2,7 @@
 
 Flutter communicates natively with iOS part of mobile application. The native iOS part of mobile applicastion uses 'WatchConnectivity' to then further communicate with watchOS.
 
-##Possible errors
+## Possible errors
 
 — After running flutter pub get, on `GeneratedPluginRegistrant.register(with: self)` it is because of XCode, the app should build successfully!
 
