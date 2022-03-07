@@ -23,15 +23,39 @@ enum WatchSendMethod: String {
     case sendCounterToFlutter
 }
 
-final class CommunicationService: NSObject, WCSessionDelegate {
+final class CommunicationService: NSObject {
+    
+    // MARK: - Properties -
+    
     static let instance = CommunicationService()
+    private var delegates = [CommunicationServiceDelegate]()
     private let tableDataPersistanceService = TableDataPersistanceService()
     private let wcSession = WCSession.default
-    // TODO: Add removal from delegates, so no calles are made when not needed.
-    private var delegates = [CommunicationServiceDelegate]()
+    
+    // MARK: - Int -
     
     private override init() {}
+}
+
+// MARK: - WCSessionDelegate methods
+extension CommunicationService: WCSessionDelegate {
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        print("@session did complete with: acctivation state: ", activationState.rawValue)
+        print("Is reachable: ", wcSession.isReachable)
+    }
     
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
+        handleIncommingMessages(message: message, replyHandler: nil)
+    }
+    
+    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
+        handleIncommingMessages(message: applicationContext, replyHandler: nil)
+    }
+}
+
+// MARK: - Public methods -
+
+extension CommunicationService {
     func setupService() {
         if(WCSession.isSupported()) {
             wcSession.delegate = self
@@ -48,9 +72,6 @@ final class CommunicationService: NSObject, WCSessionDelegate {
         delegates.removeAll { delegate in
             delegate.id == id
         }
-        delegates.forEach { delegate in
-            print(delegate.id)
-        }
         print("Removed delegates, now list: ", delegates)
     }
     
@@ -65,11 +86,15 @@ final class CommunicationService: NSObject, WCSessionDelegate {
         let messageData: [String: Any] = ["method": method, "data": data]
         wcSession.sendMessage(messageData, replyHandler: nil, errorHandler: nil)
     }
-    
+}
+
+// MARK: - Private methods -
+
+private extension CommunicationService {
     func handleIncommingMessages(message: [String : Any], replyHandler: (([String : Any]) -> Void)?) {
         print("Watch received message: ", message)
         guard let method = message["method"] as? String, let subscriptionTheme = WatchReceiveMethod(rawValue: method) else {
-            print("No such method for watch: ", message["method"])
+            print("No such method for watch: ", message["method"] ?? "n/a")
             return
         }
         let data = message["data"]
@@ -77,8 +102,7 @@ final class CommunicationService: NSObject, WCSessionDelegate {
         if (subscriptionTheme == .presentTableData) {
             handleTableData(data: data)
         }
-        
-        print("Notifiy for delegates with theme: ", subscriptionTheme)
+
         delegates.forEach { delegate in
             if (delegate.subscriptionTheme == subscriptionTheme) {
                 delegate.onDataReceived(data: data)
@@ -92,19 +116,4 @@ final class CommunicationService: NSObject, WCSessionDelegate {
         }
         tableDataPersistanceService.saveTableData(tableData)
     }
-    
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
-        print("@session did complete with: acctivation state: ", activationState.rawValue)
-        print("Activated state...")
-        print("Is reachable: ", wcSession.isReachable)
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
-        handleIncommingMessages(message: message, replyHandler: nil)
-    }
-    
-    func session(_ session: WCSession, didReceiveApplicationContext applicationContext: [String : Any]) {
-        handleIncommingMessages(message: applicationContext, replyHandler: nil)
-    }
 }
-
