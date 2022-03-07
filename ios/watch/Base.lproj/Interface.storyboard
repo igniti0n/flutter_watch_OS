@@ -11,7 +11,7 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="watch" customModuleProvider="target">
                     <items>
-                        <label width="1" height="0.40000000000000002" alignment="left" text="0" textAlignment="center" id="3Bv-8V-jFt"/>
+                        <label width="1" height="0.29999999999999999" alignment="left" text="0" textAlignment="center" id="3Bv-8V-jFt"/>
                         <button width="1" alignment="left" title="Counter +2" id="UdG-uy-PsM">
                             <connections>
                                 <action selector="onButtonPressed" destination="AgC-eL-Hgc" id="rEe-Uw-Twy"/>
@@ -22,6 +22,11 @@
                                 <segue destination="baL-Rq-gew" kind="push" id="QGW-RJ-Xtx"/>
                             </connections>
                         </button>
+                        <button width="1" alignment="left" title="Button" id="f2G-Of-lb4">
+                            <connections>
+                                <segue destination="RgM-NF-3tG" kind="push" id="mbD-6e-Uib"/>
+                            </connections>
+                        </button>
                     </items>
                     <connections>
                         <outlet property="button" destination="UdG-uy-PsM" id="bs6-sR-xJj"/>
@@ -29,7 +34,30 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="71" y="23"/>
+            <point key="canvasLocation" x="71" y="-49"/>
+        </scene>
+        <!--Weather Interface Controller-->
+        <scene sceneID="HTU-WD-VNa">
+            <objects>
+                <controller id="RgM-NF-3tG" customClass="WeatherInterfaceController" customModule="watch_WatchKit_Extension">
+                    <items>
+                        <button width="1" alignment="left" title="Fetch" id="Pqs-71-MhU">
+                            <connections>
+                                <action selector="onFetchButtonPressed" destination="RgM-NF-3tG" id="XLe-rl-gxd"/>
+                            </connections>
+                        </button>
+                        <label width="1" height="0.29999999999999999" alignment="left" text="Temp:" textAlignment="left" id="6aM-Ql-s8Y"/>
+                        <label width="1" height="0.29999999999999999" alignment="left" text="Wind:" textAlignment="left" id="ZlM-K4-o5v"/>
+                        <label width="1" height="0.29999999999999999" alignment="left" text="Pressure:" id="O5Q-Zf-EbH"/>
+                    </items>
+                    <connections>
+                        <outlet property="pressureLabel" destination="O5Q-Zf-EbH" id="Uba-Rx-W9Y"/>
+                        <outlet property="weatherLabel" destination="6aM-Ql-s8Y" id="05t-JQ-tGm"/>
+                        <outlet property="windLabel" destination="ZlM-K4-o5v" id="E4h-LD-Xzg"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="71" y="332"/>
         </scene>
         <!--Table Interface Controller-->
         <scene sceneID="quR-BQ-aT8">
@@ -56,7 +84,7 @@
                     </connections>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="370" y="23"/>
+            <point key="canvasLocation" x="492" y="-50"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">
@@ -73,21 +101,21 @@
                     </connections>
                 </notificationController>
             </objects>
-            <point key="canvasLocation" x="220" y="643"/>
+            <point key="canvasLocation" x="71" y="691"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
                 <controller id="4sK-HA-Art" customClass="NotificationController" customModule="watch" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="643"/>
+            <point key="canvasLocation" x="492" y="691"/>
         </scene>
         <!--Notification Controller-->
         <scene sceneID="Niz-AI-uX2">
             <objects>
                 <controller id="eXb-UN-Cd0" customClass="NotificationController" customModule="watch" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="468" y="345"/>
+            <point key="canvasLocation" x="492" y="345"/>
         </scene>
     </scenes>
 </document>

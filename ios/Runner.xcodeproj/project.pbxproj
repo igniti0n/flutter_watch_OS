@@ -16,6 +16,8 @@
 		A565D15527CEA6E600816E0B /* TableInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15427CEA6E600816E0B /* TableInterfaceController.swift */; };
 		A565D15727CF6C5F00816E0B /* ConnectivityService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15627CF6C5F00816E0B /* ConnectivityService.swift */; };
 		A565D15927CF6C8500816E0B /* TableDataPersistanceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */; };
+		A565D15C27D0BA1700816E0B /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15B27D0BA1700816E0B /* WeatherService.swift */; };
+		A565D15E27D0CE0000816E0B /* WeatherInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A565D15D27D0CE0000816E0B /* WeatherInterfaceController.swift */; };
 		A597401D27CE9D790080003C /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A597401C27CE9D790080003C /* TableViewCell.swift */; };
 		A5C47DA427CCCC6400DBE1C2 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5C47DA227CCCC6400DBE1C2 /* Interface.storyboard */; };
 		A5C47DA627CCCC6600DBE1C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5C47DA527CCCC6600DBE1C2 /* Assets.xcassets */; };
@@ -97,6 +99,8 @@
 		A565D15427CEA6E600816E0B /* TableInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableInterfaceController.swift; sourceTree = "<group>"; };
 		A565D15627CF6C5F00816E0B /* ConnectivityService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityService.swift; sourceTree = "<group>"; };
 		A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataPersistanceService.swift; sourceTree = "<group>"; };
+		A565D15B27D0BA1700816E0B /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		A565D15D27D0CE0000816E0B /* WeatherInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInterfaceController.swift; sourceTree = "<group>"; };
 		A597401C27CE9D790080003C /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		A5C47DA027CCCC6400DBE1C2 /* watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = watch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5C47DA327CCCC6400DBE1C2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			children = (
 				A565D15627CF6C5F00816E0B /* ConnectivityService.swift */,
 				A565D15827CF6C8500816E0B /* TableDataPersistanceService.swift */,
+				A565D15B27D0BA1700816E0B /* WeatherService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				A565D15A27CF6C9100816E0B /* Services */,
 				A565D15427CEA6E600816E0B /* TableInterfaceController.swift */,
 				A597401C27CE9D790080003C /* TableViewCell.swift */,
+				A565D15D27D0CE0000816E0B /* WeatherInterfaceController.swift */,
 				A5C47DB027CCCC6600DBE1C2 /* InterfaceController.swift */,
 				A5C47DB227CCCC6600DBE1C2 /* ExtensionDelegate.swift */,
 				A5C47DB427CCCC6600DBE1C2 /* NotificationController.swift */,
@@ -389,10 +395,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A565D15927CF6C8500816E0B /* TableDataPersistanceService.swift in Sources */,
+				A565D15C27D0BA1700816E0B /* WeatherService.swift in Sources */,
 				A565D15527CEA6E600816E0B /* TableInterfaceController.swift in Sources */,
 				A597401D27CE9D790080003C /* TableViewCell.swift in Sources */,
 				A565D15727CF6C5F00816E0B /* ConnectivityService.swift in Sources */,
 				A5C47DB527CCCC6600DBE1C2 /* NotificationController.swift in Sources */,
+				A565D15E27D0CE0000816E0B /* WeatherInterfaceController.swift in Sources */,
 				A5C47DB727CCCC6600DBE1C2 /* ComplicationController.swift in Sources */,
 				A5C47DB327CCCC6600DBE1C2 /* ExtensionDelegate.swift in Sources */,
 				A5C47DB127CCCC6600DBE1C2 /* InterfaceController.swift in Sources */,
@@ -807,8 +815,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "watch WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = watch_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.nativeCommunication.demo.demo;
 				INFOPLIST_KEY_WKExtensionDelegateClassName = watch_WatchKit_Extension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -849,8 +858,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "watch WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = watch_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.nativeCommunication.demo.demo;
 				INFOPLIST_KEY_WKExtensionDelegateClassName = watch_WatchKit_Extension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -888,8 +898,9 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "watch WatchKit Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "watch WatchKit Extension";
-				INFOPLIST_KEY_CLKComplicationPrincipalClass = watch_WatchKit_Extension.ComplicationController;
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.nativeCommunication.demo.demo;
 				INFOPLIST_KEY_WKExtensionDelegateClassName = watch_WatchKit_Extension.ExtensionDelegate;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
